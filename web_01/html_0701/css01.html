@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 01</title>
+    <!--
+    * 페이지 내에 모든 해당 태그들에 대한 스타일을 적용한다 
+    span태그의 스타일 지정 => border(태두리) : 두께, 색깔, 모양
+    span태그 => 크기 지정을 하지만 in-line 태그의 특징상 크기가 반영되지 않음
+    div태그 => border(태두리) : 두께, 색깔, 모양 ( 점선 )
+    div태그 => 크기 지정 ( 반드시 단위까지 작성 ) => block 태그의 특징 
+    -->
+    <style>
+        span{border: 3px black solid;}
+        span{width: 100px; height: 100px;}
+        span{ margin: 20px; }
+
+        div{border : 3px red dotted}
+        div{width: 100px; height: 100px;}
+        div{ margin: 50px; }
+    </style>
+</head>
+<body>
+    <span>SPAN 01</span>
+    <span>SPAN 01</span>
+    <div>DIV</div>
+    <span>SPAN 02</span>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학생 점수 등록</title>
+</head>
+<body>
+    <h1>점수 등록화면</h1>
+    <!-- reg_score_action.jsp는 현재 가상 -->
+    <form action="re_score_action.jsp" method="post">
+        <!-- 
+        type : 입력 형식, 
+        name : 입력한 값을 저장하는 토큰, 
+        value : 화면 입력된 값을 저장하는 변수
+        placeholder : 힌트 
+        br : 줄바꿈 태그 
+        -->
+        등록암호 : 
+        <input type="password" name="pass" 
+        placeholder="암호를 입력하세요" value=""> <br>
+
+        학생이름 : 
+        <input type="text" name="std_name" 
+        placeholder="학생 이름을 입력하세요" value="홍길동" disabled> <br>
+
+        <!-- 
+        radio : 선택지를 만드는 태그 => 1개만 선택 가능
+        checked : 선택된 상태 ( 큰 의미는 없음, 임의로 선택해둠, 생략가능! )
+        단, name 파라미터 값을 동일하게 지정해줘야 그 중에서 1개만 선택가능
+        만약, name값이 다르게 지정되었다면? => 동시에 선택이 가능해진다 
+        -->
+        성별를 입력해주세요:<br> 
+        <input type="radio" name="gender" value="m" checked>남자 
+        <input type="radio" name="gender" value="w">여자<br>
+        
+        <!--
+        checkbox : 선택지를 만드는 태그 => 여러개(중복) 선택 가능 
+        disable : 선택지를 비활성화 시키는 속성
+        -->
+        듣고 싶은 과목를 입력해주세요:<br>   
+        <input type="checkbox" name="subject" value="C" checked>C언어<br>
+        <input type="checkbox" name="subject" value="JAVA">자바<br>
+        <input type="checkbox" name="subject" value="HTML">HTML<br>
+        <input type="checkbox" name="subject" value="CSS">CSS<br>
+        <input type="checkbox" name="subject"value="python" disabled>Python<br>
+
+        <!--
+        file : 파일을 업로드 할 수 있는 태그 
+        -->
+        업로드 할 파일을 입력해주세요:<br>   
+        <input type="file" name="upload">
+
+        <!--
+        select : 드롭 다운 선택지 리스트를 생성
+        selected : 임의로 선택되어 있는 값
+        -->
+        <select name="subject">
+            <option value="C">C언어</option>
+            <option value="JAVA">JAVA</option>
+            <option value="HTML" selected>HTML</option>
+            <option value="CSS">CSS</option>
+        </select> <br>
+        
+        <!--
+        textaread : 텍스트를 입력할 수 있는 공간 
+        rows, cols를 별도로 지정 가능 
+        -->
+        Memo:<br>   
+        <textarea name="memo" rows="10" cols="30"></textarea>     
+        <!--
+            range : 슬라이드 바름 이용해서 값을 입력가능
+        -->
+        당신이 가장 좋아하는 숫자를 골라주세요!!:<br>
+        <input type="range" name="range_number">
+        <br>
+
+        <!-- submit : 버튼 생성 -->
+        <input type="submit", value="전송">
+    </form>
+</body>
+</html>

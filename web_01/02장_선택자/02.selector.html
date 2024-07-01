@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자(selectors) id vs. class</title>
+  <!-- 
+  .circle : 스타일 명 ==> 함수처럼 저장해두고 사용할 수 있다
+  border-radius : 태두리를 둥글게 만들어주는 속성
+  -->
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: lightcoral;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      background-color: lightgreen;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+  id값은 중복되면 안된다! => 당장은 중복되도 정상 동작은 한다!
+  단, JS로 실행할 때 문제가 발생하게 된다 
+  -->
+  <div class="circle"></div>
+  <div id="box"></div>
+  <div class="circle"></div>
+</body>
+</html>

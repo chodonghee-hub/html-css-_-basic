@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 테스트</title>
+</head>
+<body>
+    <h1>폼 테스트</h1>
+    <!-- method="post"는 password를 전송하게 될 때 url에 표시되면 안되기 때문이다 -->
+    <form action="input.jsp" method="post">
+        아이디를 입력해주세요<br>    
+        <!-- mid 파라미터에 입력 받은 값을 저장 -->
+        <input type="text" name="mid">
+        
+        <!-- 줄바꿈 -->
+        <br>
+        암호를 입력해주세요<br>
+        <!-- mpwd 파라미터에 입력 받은 값을 저장 -->
+        <input type="password" name="mpwd">
+
+        <!-- 버튼 생성, 전송 기능만 담당 -->
+        <input type="submit" value="전송">
+    </form>
+</body>
+</html>
