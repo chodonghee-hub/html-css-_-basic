@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bootstrap Grid System</title>
-<link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./bootstrap-5.3.2-dist/css/bootstrap.min.css">
 <style>
   div.row>div {
     line-height: 2rem;
@@ -16,23 +16,28 @@
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="col">col</div>
+  <!-- 부트스트랩 사용하기 -->
+  <div class="container">
+    <!-- div class = "container" 로 설정하기 -->
+    <div class="row">
+      <!-- col 이라고 사용하면 사이즈를 별도로 지정X => 자동으로 균일하게 할당 -->
+      <div class="col">col</div>
+      <div class="col">col</div>
+      <div class="col">col</div>
+    </div>
+    <div class="row">
+      <!-- col-3 은 가용한 공간 중에 3칸을 사용하겠다는 의미, 총 공간 12칸 -->
+      <!-- 만약 12칸의 공간을 초과하는 배치를 한다면 넘치는 부분은 다음줄로 밀려난다 -->
+      <div class="col-3">col-3</div>
+      <div class="col-4">col-4</div>
+      <div class="col-5">col-5</div>
+    </div>
+    <div class="row">
+      <div class="col">col</div>
+      <div class="col-6">col-6</div>
+      <div class="col">col</div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-3">col-3</div>
-    <div class="col-4">col-4</div>
-    <div class="col-5">col-5</div>
-  </div>
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col-6">col-6</div>
-    <div class="col">col</div>
-  </div>
-</div>
-<script src="/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

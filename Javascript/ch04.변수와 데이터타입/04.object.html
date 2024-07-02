@@ -14,10 +14,10 @@
       color: 'white',
       brand: '슈퍼카',
       start: function() {
-        console.log('차량 출발');
+        console.log( this.brand,'차량 출발');
       },
       stop: function(msg) {
-        console.log(msg + ' 정지');
+        console.log(msg + ' 정지' + this.brand);
       }
     }
 
@@ -25,6 +25,8 @@
     console.log(myCar.color);
     myCar.start();
     myCar.stop('우리차');
+    myCar.brand = "제네시스"    // myCar는 읽기 전용 변수라서 값을 바꿀 수 없다. 단, 이미 할당 받은 변수 공간의 값은 변경 가능
+    console.log(myCar.brand)
   </script>
 </body>
 </html>

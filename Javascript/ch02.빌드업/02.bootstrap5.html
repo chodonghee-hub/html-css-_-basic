@@ -5,16 +5,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bootstrap Components</title>
-<link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
+<!-- 
+  container : 고정폭 + 중앙정렬 
+  container : 전체폭 사용 
+-->
 <div class="container-fluid">
   <div class="row">
+    <!-- col-8 : Card 모양 UI를 사용하기 위한 영역 8칸 할당 -->
     <div class="col-8">
       <div class="row">
         <div class="col">
+          <!-- card : Card모양 UI 사용 -->
           <div class="card">
+            <!-- Card에 사용할 썸네일 이미지 삽입 -->
             <img src="https://dummyimage.com/600x400/333/fff" class="card-img-top" alt="...">
+            <!-- card-body : Card에 나올 내용들 입력 -->
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
