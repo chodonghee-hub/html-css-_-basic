@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맵, 셋 테스트</title>
+    <script>
+        let map = new Map()
+
+        // python에 dictiionary와 유사한 기능 ( key, value )
+        map.set('1', 'str1')
+        map.set(1, 'num1')
+        map.set(true, 'bool1')
+
+        alert(map.get(1))   // num1
+        alert(map.get('1')) // str1
+        
+    </script>
+    <script>
+        let set = new Set()
+
+        let john = { name:"John" }
+        let pete = { name:"Pete" }
+        let mary = { name:"Mary" }
+
+        set.add(john)
+        set.add(pete)
+        set.add(mary)
+        alert(set.size)
+
+        for (let user of set) {
+            aler(user.name)
+        }
+
+    </script>
+</head>
+<body>
+    <h1>맵, 셋 테스트</h1>
+</body>
+</html>

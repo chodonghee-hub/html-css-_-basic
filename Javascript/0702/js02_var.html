@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 변수</title>
+    <script>
+        var age = 30        // 전역 변수 
+        let score = 70      // score 변수 선언 
+        function prn() {    // 함수 선언
+            age2 = 40       // 지역 변수 
+        }
+        age = 70
+        score = 80          // score의 값을 재할당 
+        alert(age)
+
+        const a = 1         // const : 읽기 전용
+        var b = 2           // var : 전역 변수, 지역 변수, 재선언 가능 
+        let c = 3           // let : 전역 변수, 블록 변수 ( 블록 단위 관리 => 반복문의 변수 ), 재선언 불가
+    </script>
+</head>
+<body>
+    <script>
+        alert(age)
+    </script>
+    <h1>js 변수</h1>
+</body>
+</html>
