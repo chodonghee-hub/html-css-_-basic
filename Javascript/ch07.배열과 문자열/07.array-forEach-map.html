@@ -16,12 +16,19 @@
 
   numbers.forEach(loopNumber1);
 
+  console.log('==========================');
+
   function loopNumber1(item, index) {
     console.log(item, index);
   }
 
   console.log('==========================');
 
+  for(let v of numbers) {
+    console.log(v)
+  }
+
+  // 쉽게 새로운 배열을 만드는 방법 
   let newArray1 = numbers.map(function(value, index, numbers) {
     return 10 + value;
   });

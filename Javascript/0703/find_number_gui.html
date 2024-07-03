@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
+    <title>Find Number</title>
+    <style>
+        .button {
+            width: 100px;
+            height: 50px;
+
+            position: relative;
+            left: 20px;
+            top: 20px;
+
+            margin: 5px;
+            border: 5px;
+            border-radius: 10%;
+
+            color: #333333;
+            font-size: 1.3em;
+            font-weight: bold;
+            
+        }
+        .button:active {
+            box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB, 
+                        inset .3rem .4rem .8rem #BEC5D0; 
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+            
+            /* 버튼 위치 */
+            position: relative;
+            left: 50px;
+            top: 50px;
+            
+            /* 상자 디자인 큰틀 */
+            margin: 5px;
+            border: 5px;
+            background-color: #ecf5e4;
+            border-radius: 50%;
+                    
+            /* 글씨 */
+            color: #333333;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+            
+        .btn:active {
+            /*버튼 눌리는 효과*/
+            box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB, 
+                        inset .3rem .4rem .8rem #BEC5D0; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>숫자 찾기 게임</h1>
+    <div class="container-fluid">
+        <div>
+            <span>시도횟수 : </span>
+            <span class="msg">0</span>
+        </div>
+        <div>
+            <!-- <button type="button" id="btn_start" onclick="start()" class="btn text-white" style="background-color: #FF9966;">게임시작</button>
+            <button type="button" id="btn_reStart" disabled="true" onclick="reSetGame()" class="btn text-white" style="background-color: #3399CC;">재도전</button> -->
+            <button type="button" id="btn_start" onclick="start()" class="button" style="background-color: #FF9966;">게임시작</button>
+            <button type="button" id="btn_reStart" disabled="true" onclick="reSetGame()" class="button" style="background-color: #3399CC;">재도전</button>
+        </div>
+        <div>
+            <div class="row"></div>
+        </div>
+    </div>
+    <script>
+        var r
+        var gameStatus = false
+
+        // 1. 100개의 버튼 생성
+        for(let index=1; index<101; index++) {
+            document.write("<button type=button class='btn' id="+index+" style='background-color: #CCCCCC'>"
+                + index + "</button>")
+        }
+
+        // 3. 게임 시작 버튼을 누르면 난수를 생성해서 R에 저장 
+        function randomNumebr() {
+            let rnd = Math.floor(Math.random()*100)+1
+            console.log("start() ==> " + rnd)
+            return rnd
+        }
+        
+        // 재도전 
+        function reSetGame(){
+            let buttons = document.querySelectorAll('button[class="btn"]')
+            document.querySelector('#btn_reStart').disabled=true
+            document.querySelector('.msg').innerHTML = 0
+
+            for (let btn of buttons) {
+                btn.style='background-color: #CCCCCC'
+                btn.innerHTML=btn.id
+                btn.disabled=false
+            }
+            r = randomNumebr()
+        }
+
+        function start() {
+            document.querySelector("#btn_start").disabled=true
+            document.querySelector('#btn_reStart').disabled=false
+            // 2. 난수 생성
+            r = randomNumebr()
+            setBtnMethod()
+        }
+
+        // 4. 100개의 버튼에 이벤트를 등록한다 
+        /*
+        (1) 클릭한 버튼의 숫자와 r을 비교
+        (2) 버튼 숫자와 r이 같으면 "정답" 표시
+        (3) r이 크면 UP 표시
+        (4) r이 작으면 DN 표시
+        */
+        // const buttons = document.querySelectorAll('.btn')
+        function setBtnMethod() {
+            let buttons = document.querySelectorAll('button[class="btn"]')
+            let cnt = document.querySelector('.msg')
+            for (let btn of buttons) {
+                btn.onclick = function() {
+                    // 재도전 버튼을 활성화 해준다 
+                    document.querySelector('#btn_reStart').disabled=false
+
+                    // 5. 시도횟수를 적당한 곳에 표시한다. 숫자버튼을 누르때마다 시도횟수는 1씩 올라간다.
+                    cnt.innerText = parseInt(cnt.innerHTML)+1;
+                    if (!btn.disabled) {
+                        if (btn.innerHTML == r) {
+                            console.log("정답입니다")
+                            btn.innerHTML = "정답"
+                            btn.style='background-color: #33FF00'
+                            btn.disabled=true
+                        }
+                        else if (btn.innerHTML > r) {
+                            console.log("DN")
+                            btn.innerHTML = "DN"
+                            btn.style='background-color: #CC66FF'
+                            btn.disabled=true
+                        }
+                        else if (btn.innerHTML < r) {
+                            console.log("UP")
+                            btn.innerHTML = "UP"
+                            btn.style='background-color: #FF0033'
+                            btn.disabled=true
+                        }
+                    }
+                }
+            }
+        }      
+    </script>
+</body>
+</html>

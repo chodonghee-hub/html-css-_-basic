@@ -11,13 +11,13 @@
   const pets = ['개', '고양이', '곰', '말'];
 
   console.log('[pets]', pets);
-  pets.splice(2);
+  pets.splice(2);         // 삭제 시작 번호, 삭제 위치 [2: ]
   console.log('[splice()]', pets);
-  pets.splice(0, 1);
+  pets.splice(0, 1);      // 삭제 [0:1] 
   console.log('[splice()]', pets);
-  pets.splice(0, 0, '햄스터');
+  pets.splice(0, 0, '햄스터');  // 삭제 시작, 삭제 개수, 추가 값 ==> pets[햄스터, 고양이]
   console.log('[splice()]', pets);
-  pets.splice(1, 1, '거북이', '앵무새');
+  pets.splice(1, 1, '거북이', '앵무새'); // 삭제 시작, 삭제 개수, 추가1, 추가2 ==> pets[햄스터, 거북이, 앵무새]
   console.log('[splice()]', pets);
   console.log('=================');
 

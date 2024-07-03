@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Array::forEach() & map()</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
@@ -29,6 +29,7 @@
     lists.push('<li class="list-group-item">' + value.name + '</li>');
   });
 
+  // col클래스 내부에 값을 추가 한다 
   const target1 = document.querySelector('.col:nth-of-type(1)');
   target1.innerHTML = '<ul class="list-group">' + lists.join('') + '</ul>';
 

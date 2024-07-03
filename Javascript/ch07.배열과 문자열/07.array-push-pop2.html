@@ -29,13 +29,14 @@
   let lists = [];
   const checkboxes = document.querySelectorAll('[name="city"]');
   for (let checkbox of checkboxes) {
-    checkbox.onchange = setListGroup;
+    checkbox.onchange = setListGroup;   // 실행할 함수 => onchange가 될때 ~ 
   }
 
   function setListGroup() {
-    resetListGroup();
+    resetListGroup(); // 이전 저장 리스트를 삭제 => 초기화 
 
     for (let checkbox of checkboxes) {
+      // 체크된 체크 박스를 골라서 list에 넣어준다 
       if (checkbox.checked) {
         lists.push('<li class="list-group-item">' + checkbox.value + '</li>');
       }
