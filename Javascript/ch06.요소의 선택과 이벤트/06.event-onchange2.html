@@ -42,6 +42,7 @@
 </div>
 
 <script>
+  // name=subject인 태그에 모두 적용 
   const radios = document.querySelectorAll('[name="subject"]');
   for (let radio of radios) {
     radio.onchange = function () {
@@ -50,6 +51,7 @@
     }
   }
 
+  // name=holiday인 모든 태그들이 해당 된다 
   const checkboxes = document.querySelectorAll('[name="holiday"]');
   for (let checkbox of checkboxes) {
     checkbox.onchange = () => {

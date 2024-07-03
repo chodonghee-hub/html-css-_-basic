@@ -40,11 +40,16 @@
 
 <script>
   // 이벤트 대상 + 이벤트 트리거 + 이벤트 핸들러
+  // name이 subject인 select태그를 가리킨다 
+  // onchange는 선택 항목이 변경되면 실행되는 이벤트 
   document.querySelector('select[name="subject"]').onchange = function() {
+
+    // 현재 this : select태그 중에 name=subject인 것
     console.log(this); // document.querySelector('select[name="subject"]')
     console.log(this.value);
   }
 
+  // name=userid인 태그를 가리킨다 
   document.querySelector('[name="userid"]').onchange = function() {
     console.log(this.value);
   }
