@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my event test 01</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>my event test 01</h1>
+    <input type="text" id="num1" placeholder="숫자를 입력하세요">
+    <select id="opr">
+        <option value="">연산자를 선택하세요</option>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="num2" placeholder="숫자를 입력하세요">
+    =
+    <input type="text" id="result">
+
+    <script>
+        let opr = document.querySelector("#opr")
+        opr.onchange = function() {
+            const num1 = parseInt(document.querySelector("#num1").value)
+            const num2 = parseInt(document.querySelector("#num2").value)
+            const rs = document.querySelector("#result")
+            let result = 0
+            alert(num1 + " " + this.value + " " + num2)
+            if (this.value == "+") {
+                result = num1+num2
+            }
+            else if (this.value == "-") {
+                result = num1-num2
+            }
+            else if (this.value == "*") {
+                result = num1*num2
+            }
+            else if (this.value == "/") {
+                result = num1+num2
+            }
+            else if (this.value == "%") {
+                result = num1%num2
+            }
+            rs.value = result
+        }
+    </script>
+</body>
+</html>
