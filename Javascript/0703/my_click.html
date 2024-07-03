@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Click</title>
+</head>
+<body>
+    
+    <button>클릭하세요</button>
+    <div id="msg"></div>
+    <!--
+    클릭 횟수를 표시 
+    -->
+    <script>
+        let count = 0
+        let btn = document.querySelector("button")
+        btn.onclick = function() {
+            count++
+            // #msg로 접근해야 id가 msg인 태그를 접근할 수 있다 
+            let msg = document.querySelector("#msg")
+            msg.innerText = count;
+        }
+    </script>
+
+</body>
+</html>

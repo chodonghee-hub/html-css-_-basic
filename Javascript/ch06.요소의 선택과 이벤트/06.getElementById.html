@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>getElementById()</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
@@ -19,8 +19,10 @@
   </div>
   
   <script>
+    // 아이디가 two인 css속성 객체 지정 => lightblue 지정 
     document.getElementById('two').style.backgroundColor = 'lightblue';
 
+    // list 변수에 아이디가 four인 css속성 객체를 저장 
     const list = document.getElementById('four');
     console.log(list);
     console.log(typeof list);

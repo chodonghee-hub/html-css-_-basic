@@ -5,10 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>querySelectorAll()</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container-fluid">
+    <!-- 부트스트랩에 있는 btn 클래스 중에 스타일이 있는 클래스를 적용  -->
     <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-secondary">Secondary</button>
     <button type="button" class="btn btn-success">Success</button>
@@ -28,6 +29,12 @@
       button.onclick = function() {
         console.log(this.innerText);
       }
+    }
+  </script>
+  <h1>반복은 끝날까?</h1>
+  <script>
+    for (let i=0; i<5; i++){
+      document.write(i + "<br>")
     }
   </script>
 </body>
