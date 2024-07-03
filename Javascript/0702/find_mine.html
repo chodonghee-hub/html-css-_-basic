@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지뢰찾기</title>
+</head>
+<script>
+    cx = Math.floor(Math.random()*10)
+    cy = Math.floor(Math.random()*10)
+
+    ux = prompt("x 좌표를 입력하세요", "")
+    uy = prompt("y 좌표를 입력하세요", "")
+    
+    const  dis = (x1, x2, y1, y2) => Math.floor(Math.sqrt((x1-x2)^2 + (y1, y2)^2))
+    
+    if (dis(cx, ux, cy, uy)===0) {
+        alert("정답입니다! ** 정답 : ", dis(cx, cy))
+    }
+    else {
+        let cnt = 9
+        while (cnt >= 1){
+            alert("("+ ux + ", " +uy+ ") 위치는 정답이 아닙니다. *남은 기회 : "+ cnt)
+            ux = prompt("x 좌표를 입력하세요", "")
+            uy = prompt("y 좌표를 입력하세요", "")
+            
+            if (dis(cx, ux, cy, uy)===0) {
+                alert("정답입니다! ** 정답 : ", dis(cx, cy))
+                break
+            }
+            if (cnt==1) {
+                alert("넌 바보야..")
+            }
+            cnt--
+        }
+    }
+</script>
+<body>
+    
+</body>
+</html>

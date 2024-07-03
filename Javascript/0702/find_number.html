@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Number</title>
+</head>
+<script>
+    var r = Math.floor(Math.random()*100)
+    
+    for(let i=0; i<4; i++) {
+        let ans = parseInt(prompt("1~100 사이 수를 입력하세요", ""))
+        
+        if (ans === r) {
+            alert("정답입니다")
+            break;
+        }
+        if (ans > r) {
+            alert("낮춰주세요")
+        }
+        if (ans < r) {
+            alert("높여주세요")
+        }
+    }
+</script>
+<body>
+    
+</body>
+</html>
