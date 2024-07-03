@@ -22,6 +22,7 @@
   <script>
     const box = document.querySelector('#box');
 
+    // 마우스가 클릭 됬을 때 => key-down
     box.onmousedown = function(event) {
       console.log(event);
       this.style.width = '200px';
@@ -29,6 +30,7 @@
       this.style.backgroundColor = 'lightgreen';
     }
 
+    // 마우스 클릭 해제 => key-up
     box.onmouseup = (evt) => {
       console.log(evt);
       box.style.width = '100px';
