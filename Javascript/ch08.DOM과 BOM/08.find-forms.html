@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM::Find forms</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
@@ -38,12 +38,15 @@
 
       switch(parseInt(num)) {
         case 1:
+          // DOM을 이용해서 form 태그들을 모두 불러온다 => 그 중에 0번째 
           document.forms[0].user.focus();
           break;
         case 2:
+          // forms로 불러온거 중에 name이 myForm인 태그 
           document.forms['myForm'].user.focus();
           break;
         case 3:
+          // yourForm = name속성값
           document.yourForm.user.focus();
           break;
       }

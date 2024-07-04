@@ -15,6 +15,7 @@
         <button class="btn btn-outline-secondary" type="button">링크</button>
       </div>
       <div class="col">
+        <!-- links[], target="_blank" : 새창 열기 -->
         <a href="https://www.booksr.co.kr/" class="link-primary" target="_blank">생능출판사</a>
         <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript" class="link-success">MDN</a>
         <a href="https://www.w3schools.com/js/default.asp" class="link-danger">w3schools.com</a>
@@ -25,11 +26,14 @@
 
   <script>
     document.querySelector('.btn').onclick = function() {
+      // input태그에 name이 num인거 선택해서 값 추출
       let num = document.querySelector('input[name="num"]').value;
       num = parseInt(num) - 1;
 
+      // DOM을 이용해서 link가 있는 태그들의 모든 링크를 불러온다 
       let hyperlinks = document.links;
-
+      console.log(hyperlinks);
+      
       [...hyperlinks].forEach(function(item, index) {
         if (num == index) item.click();
       });
