@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = [10, 20, 30, 40]
+        let total = 0
+
+        // 기본 for
+        for(let i=0; i<arr.length; i++) {
+            total += arr[i]
+        }
+
+        // for in ==> 인덱스를 반환
+        total = 0
+        for (let i in arr) {
+            total += arr[i]
+        }
+        
+        // for of ==> 값을 반환
+        total = 0
+        for (let i of arr) {
+            total += i
+        }
+
+        // forEach ==> 반드시 function을 사용해야한다 
+        // 복잡한 반복분을 구현해야할 때 사용
+        total = 0
+        arr.forEach(function(v){
+            total += v      // v값 누적
+        })
+        console.log("forEach total : " + total)
+
+        // reduce로 총합 계산
+        // reduce ( 누적함수, 총합 )
+        arr = [10, 20, 30, 40]
+        total = arr.reduce( function(tot, item) {
+            // 최초에 tot 값은 0이 들어가진다 
+            return tot+item
+        }, 0 )
+        console.log("reduce total = ", total)
+
+        // filter + startsWith
+        let names = ["홍길동", "김길동", "박길동"]
+        let kims = names.filter(function(n){
+            return n.startsWith("김")
+        })
+        console.log("김씨배열", kims)
+
+        // map + startsWith
+        kims = names.map(function(v) {
+            if (v.startsWith("김")){
+                return v
+            }
+            // 조건에 만족하지 못하는 값들은 undefined를 반환한다 
+        })
+        console.log("map을 이용한 김씨배열", kims)
+
+        // Quiz. 이벤트 담청자 2명을 뽑아 배열에 저장 
+        let names2 = ["홍길동", "김길동", "박길동", "최길동", "강길동"]
+        let rs = []
+        for (let i=0; i<2; i++) {
+            let r = Math.floor(Math.random()*names2.length)
+            rs.push(names2[r])
+            names2.splice(r, 1)
+        }
+        console.log(rs)
+        let age = 30
+        // ${치환글자}
+        alert( `age=${age}입니다` )
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

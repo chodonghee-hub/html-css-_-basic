@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let arr = [] 
+        let arr = new Array()
+        arr.push("홍")
+        arr.push("김")
+        console.log(arr)
+
+        arr.splice(0, 0, "박")  // 0번째에 0개 삭제, "박" 추가 
+        console.log(arr)
+        arr.splice(1, 1, "최")  // 1번쨰에 1개 삭제, 그자리에 "최" 추가 
+        console.log(arr)
+        
+        arr.sort()
+        console.log(arr)
+
+        let obj = {}        // 연관 배열
+        obj.name = "홍"
+        obj.age = 30
+        obj.info = function() {
+            return 'name=' + this.name
+        }
+        console.log(obj.info())
+        console.log(obj["name"])
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
