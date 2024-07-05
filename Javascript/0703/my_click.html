@@ -7,7 +7,11 @@
 </head>
 <body>
     
-    <button>클릭하세요</button>
+    <!-- a태그에 있는 onclick을 먼저 실행하고 href로 넘어간다 -->
+    <!-- 이때 return false로 인하여 정의해둔 기본 동작을 안하게 된다 ===> <a>, <form>만 해당 -->
+    <!-- form태그의 경우 필수 조건을 체크하고 이상이 있다면 전송을 중지한다 -->
+    <a onclick="alert(100); return false;" href="https://www.naver.com">네이버</a> <br>
+    <button onclick="">클릭하세요</button>
     <div id="msg"></div>
     <!--
     클릭 횟수를 표시 

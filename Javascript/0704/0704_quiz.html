@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7월 4일 퀴즈</title>
+    <script></script>
 </head>
 <body>
     <h1>이벤트 당첨자 등록및 추첨하기</h1>
@@ -41,13 +42,11 @@
             let winner_list = []
             let r = Math.floor(Math.random()*people.length)
             for(let i=0; i<2; i++){
-                winner_list.push(people[r])
-                people.splice(r, 1)
+                winner_list.push(people.splice(r, 1))                
             }
-            winners.innerHTML = `>> ${winner_list}`
+            winners.innerHTML = `>> ${winner_list.join(" - ")}`
+            alert("추첨 완료!")
         }
-
-        
     </script>
 
 </body>

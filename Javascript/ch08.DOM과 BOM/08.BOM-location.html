@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BOM::location</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
@@ -54,7 +54,8 @@
     document.querySelector('#protocol').innerText = location.protocol;
 
     document.querySelector('.btn').onclick = function() {
-      location.assign('https://www.booksr.co.kr');
+      // location.assign('https://www.booksr.co.kr');
+      location = 'https://www.booksr.co.kr'
 
       // location.replace('https://www.booksr.co.kr');
     }

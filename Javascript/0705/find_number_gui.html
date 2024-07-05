@@ -6,30 +6,81 @@
     <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
     <title>Find Number</title>
     <style>
+        .title_h1{
+            position: relative;
+            left: 50px;
+            right: 50px;
+
+            /* 상자 디자인 큰틀 */
+            margin: 20px;
+            border: 20px;
+
+            /* 글씨 */
+            color: #333333;
+            font-size: 3.0em;
+            font-weight: bold;
+        }
+
+        .title_h2{
+            position: relative;
+            left: 50px;
+            right: 50px;
+
+            /* 상자 디자인 큰틀 */
+            margin: 20px;
+            border: 20px;
+
+            /* 글씨 */
+            color: #333333;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .msg{
+            position: relative;
+            left: 50px;
+            right: 50px;
+
+            /* 상자 디자인 큰틀 */
+            margin: 20px;
+            border: 20px;
+
+            /* 글씨 */
+            color: #333333;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
         .button {
+            /* 크기 */
             width: 100px;
             height: 50px;
 
+            /* 버튼 위치 */
             position: relative;
             left: 20px;
             top: 20px;
 
+            /* 상자 디자인 큰틀 */
             margin: 5px;
             border: 5px;
             border-radius: 10%;
 
+            /* 글씨 */
             color: #333333;
             font-size: 1.3em;
             font-weight: bold;
 
         }
         .button:active {
+            /*버튼 눌리는 효과*/
             box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB,
             inset .3rem .4rem .8rem #BEC5D0;
             cursor: pointer;
         }
 
         .btn {
+            /* 크기 */
             width: 50px;
             height: 50px;
 
@@ -57,22 +108,35 @@
         }
     </style>
 </head>
+<!--0705
+    1. find_number_gui.html생성
+    2. 화면에 "게임시작"버튼과 1~100까지의 버튼 만든다
+    3. "게임시작" 버튼 누르면 1~100사이 난수를 생성하여 r에 저장
+    4. 100개의 버튼에 이벤트 등록
+    5. 동작은 클릭한 버튼의 숫자와 r을 비교
+        버튼숫자와 r과 같으면 "정답"
+        * r이 버튼숫자 보다 크면 클릭한 숫자포함 작은 숫자 버튼을 삭제 
+        * r이 버튼숫자 보다 작으면 클릭한 숫자 포함 큰 숫자 버튼을 삭제 
+    6. 시도 횟수 표시 
+-->
 <body>
-    <div></div>
-<h1>숫자 찾기 게임</h1>
-<div class="container-fluid">
-    <div>
-        <span>시도횟수 : </span>
-        <span class="msg">0</span>
-    </div>
-    <div>
-        <!-- <button type="button" id="btn_start" onclick="start()" class="btn text-white" style="background-color: #FF9966;">게임시작</button>
-        <button type="button" id="btn_reStart" disabled="true" onclick="reSetGame()" class="btn text-white" style="background-color: #3399CC;">재도전</button> -->
-        <button type="button" id="btn_start" onclick="start()" class="button" style="background-color: #FF9966;">게임시작</button>
-        <button type="button" id="btn_reStart" disabled="true" onclick="reSetGame()" class="button" style="background-color: #3399CC;">재도전</button>
-    </div>
-    <div>
-        <row></row>
+<div class="col justify-content-center">
+    <div class="title_h1">숫자 찾기 게임 - 0705</div>
+    <div class="container-fluid">
+        <div>
+            <span class="title_h2">시도횟수 : </span>
+            <span class="msg">0</span>
+        </div>
+        <div>
+            <!-- bootstrap butttons -->
+            <!-- <button type="button" id="btn_start" onclick="start()" class="btn text-white" style="background-color: #FF9966;">게임시작</button>
+            <button type="button" id="btn_reStart" disabled="true" onclick="reSetGame()" class="btn text-white" style="background-color: #3399CC;">재도전</button> -->
+            <button type="button" id="btn_start" onclick="start()" class="button" style="background-color: #FF9966;">게임시작</button>
+            <button type="button" id="btn_reStart" disabled="true" onclick="reSetGame()" class="button" style="background-color: #3399CC;">재도전</button>
+        </div>
+        <div>
+            <row></row>
+        </div>
     </div>
 </div>
 <!-- row, column을 이용한 정렬 -->
@@ -84,8 +148,8 @@
     for(let n=0; n<10; n++){
         document.write("<row>")
         for(let index=1; index<=10; index++) {
-            document.write("<button type=button class='btn' id="+(n*10 + index)+" style='background-color: #CCCCCC'>"
-                + (n*10 + index) + "</button>")
+            document.write("<button type=button class='btn' id="+(n*10 + index)
+            +" style='background-color: #CCCCCC'>" + (n*10 + index) + "</button>")
         }
         document.write("</row>")
     }
@@ -106,6 +170,7 @@
         for (let btn of buttons) {
             btn.style='background-color: #CCCCCC'
             btn.innerHTML=btn.id
+            btn.display=''
             btn.disabled=false
         }
         r = randomNumebr()
@@ -118,8 +183,26 @@
         r = randomNumebr()
         setBtnMethod()
     }
-
-    // 4. 100개의 버튼에 이벤트를 등록한다
+    
+    function display_btn(start, status) {
+        let buttons = document.querySelectorAll('button[class="btn"]')
+        if (status === "UP") {
+            for(let i=start-2; i>=0; i--) {
+                // buttons[i].style.display = 'none'
+                buttons[i].style.opacity = 0
+                buttons[i].disabled=true
+            }
+        }
+        else if (status === "DN") {
+            for(let i=start; i<buttons.length; i++) {
+                // buttons[i].style.display = 'none'
+                buttons[i].style.opacity = 0
+                buttons[i].disabled=true
+            }
+        }
+    }
+    
+    // 0703 - 4. 100개의 버튼에 이벤트를 등록한다
     /*
     (1) 클릭한 버튼의 숫자와 r을 비교
     (2) 버튼 숫자와 r이 같으면 "정답" 표시
@@ -148,12 +231,14 @@
                         console.log("DN")
                         btn.innerHTML = "DN"
                         btn.style='background-color: #CC66FF'
+                        display_btn(btn.id, "DN")
                         btn.disabled=true
                     }
                     else if (btn.innerHTML < r) {
                         console.log("UP")
                         btn.innerHTML = "UP"
                         btn.style='background-color: #FF0033'
+                        display_btn(btn.id, "UP")                        
                         btn.disabled=true
                     }
                 }

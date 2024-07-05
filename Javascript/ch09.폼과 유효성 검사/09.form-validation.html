@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>form::validation</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
@@ -29,11 +29,18 @@
   </div>
 
   <script>
+    // const myForm = document.querySelector('form')
+    // myForm.onsubmit = function(event) {
+      
+    // form 태그중에 첫 번째 선언된 값 , onsubmit (등록) ==> 이벤트 처리함수 
     document.forms[0].onsubmit = function (event) {
+      // name=userId인 값 ===> name에 저장하는 방법  , input type 값은 value로 접근 
       if (this.userId.value.length < 6) {
         alert('6글자 이상의 ID를 입력하세요');
+        // .focus() 커서를 클릭해둔 상태 
         this.userId.focus();
         event.preventDefault();
+        // isNaN( 값 ) ==> 숫자인지 확인하는 방법 
       } else if ((this.passwd.value.length < 4) || isNaN(this.passwd.value)) {
         alert('4글자 이상의 숫자로된 비밀번호를 입력하세요');
         this.passwd.focus();

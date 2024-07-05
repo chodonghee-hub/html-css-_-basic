@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM::remove#1</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
@@ -16,6 +16,7 @@
           <button type="button" class="btn btn-warning">3번째 삭제</button>
           <button type="button" class="btn btn-success">계속 삭제</button>
         </div>
+        <!-- removeChild를 실행하면 부모태그 list-group의 자식태그 list-group-item이 삭제된다 -->
         <ul class="list-group">
           <li class="list-group-item">1 번째</li>
           <li class="list-group-item">2 번째</li>
@@ -28,21 +29,31 @@
   </div>
 
   <script>
+
+    // 새로고침 버튼을 누르면 => location.reload실행
     document.querySelector('.btn-danger').onclick = function() {
+      // location : 현재 브라우저의 주소창 정보, reload : 새로고침
       location.reload();
     }
 
+    // ul태그 값을 지목 
     const ul = document.querySelector('.list-group');
 
     document.querySelector('.btn-warning').onclick = function() {
+      // target = li태그 중에 2번 인덱스 값
       const target = document.querySelectorAll('li')[2];
+      // 부모태그 ul에서 removeChild 실행 
       ul.removeChild(target);
     }
 
+    // "계속 삭제 버튼"을 클릭할 때 함수 실행
     document.querySelector('.btn-success').onclick = function() {
+      // ul태그에 모든 "자식" 객체 
       console.log(ul.children);
-
+      
+      // 자식 객체가 있는지 확인 => 길이로 확인
       if (ul.children.length) {
+        // 가장 첫번째 값부터 삭제
         ul.removeChild(ul.children[0]);
       }
     }
