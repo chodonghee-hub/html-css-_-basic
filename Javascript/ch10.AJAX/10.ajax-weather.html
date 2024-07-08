@@ -9,13 +9,13 @@
 </head>
 <body>
   <div class="container">
-    <div class="row my-3">
-      <div class="col-4">
+    <div class="row justify-content-center">
+      <div class="col-8">
         <div class="d-grid gap-2">
           <button class="btn btn-primary" type="button">날씨예보</button>
         </div>
+        <div class="col" id="pocket"></div>
       </div>
-      <div class="col-8" id="pocket"></div>
     </div>
   </div>
 
@@ -41,6 +41,14 @@
 
           let listGroup = '';
           listGroup += '<li class="list-group-item">' + category_title + '</li>';
+          
+          // 현재 온도 추출 ==> 배열로 저장 
+          const temps = doc.querySelectorAll('temp');
+          for (let tmp of temps) {
+            // <temp>25.0</temp> ==> childNodes[0]=25.0이다 
+            let tmp_title = tmp.childNodes[0].nodeValue
+            listGroup += '<li class="list-group-item">' + tmp_title + '</li>';
+          }
 
           document.querySelector('#pocket').innerHTML = '<ul class="list-group">' 
             + listGroup + '</ul>';
