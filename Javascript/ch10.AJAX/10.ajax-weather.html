@@ -12,7 +12,7 @@
     <div class="row my-3">
       <div class="col-4">
         <div class="d-grid gap-2">
-          <button class="btn btn-primary" type="button">AJAX 활용</button>
+          <button class="btn btn-primary" type="button">날씨예보</button>
         </div>
       </div>
       <div class="col-8" id="pocket"></div>
@@ -23,7 +23,7 @@
     document.querySelector('.btn-primary').onclick = function() {
       const xhr = new XMLHttpRequest();     // readyState = 0
       // xml 파일을 연다 
-      xhr.open('GET', '10.ajax-xml.xml');   // readyState = 1
+      xhr.open('GET', '10.ajax-weather.xml');   // readyState = 1
       xhr.send();     // readyState = 2
 
       // XML 이벤트 처리 => 상태가 바뀔 때 마다 호출되는 이벤트 
@@ -35,21 +35,15 @@
           // console.log(doc);
 
           // doc에 저장된 XML데이터들을 읽기
-          const lists = doc.querySelectorAll('list');
+          const category = doc.querySelector('category');
+
+          let category_title = category.childNodes[0].nodeValue;
 
           let listGroup = '';
-          for (let list of lists) {
-            console.log(list);
-            // <list>서울</list>  ==> 여기서 "서울"이라는 문자도 childNodes에 포함된다
-            console.log(list.childNodes);
-            console.log(typeof list.childNodes[0], list.childNodes[0]);
-            console.log(typeof list.childNodes[0].nodeValue, list.childNodes[0].nodeValue);
-            let title = list.childNodes[0].nodeValue;
-            // <li> 태그를 이용해서 XML데이터들을 HTML 코드로 작성 
-            listGroup += '<li class="list-group-item">' + title + '</li>';
-          }
+          listGroup += '<li class="list-group-item">' + category_title + '</li>';
 
-          document.querySelector('#pocket').innerHTML = '<ul class="list-group">' + listGroup + '</ul>';
+          document.querySelector('#pocket').innerHTML = '<ul class="list-group">' 
+            + listGroup + '</ul>';
         }
       };
     }

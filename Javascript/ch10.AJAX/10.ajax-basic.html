@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX</title>
-  <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
@@ -20,14 +20,21 @@
   </div>
 
   <script>
+    // 
     document.querySelector('.btn-primary').onclick = function () {
+      // 통신 객체 
       const xhr = new XMLHttpRequest();
-
+      // 통신 세팅 - xhr.open( "통신방식" - GET/POST , "요청 자원 경로", "동기통신 default=false" )
       xhr.open('GET', '10.ajax-basic-response.html');
 
+      // 실제 통신 작업, send( "POST 경우 전송값" )
       xhr.send();
 
+      // 응답은 이벤트 처리방식
+      // xhr.onload => send (응답데이터) 수신 완료 시 호출하는 함수 등록 
       xhr.onload = function() {
+        // this = xhr, responseText = 응답 결과
+        // id=pocket인 태그에 결과를 저장 
         document.querySelector('#pocket').innerHTML = this.responseText;
       }
     }
