@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-8">
+      <div class="col-12">
         <div class="d-grid gap-2">
           <button class="btn btn-primary" type="button">날씨예보</button>
         </div>
@@ -44,22 +44,39 @@
           
           // 현재 온도 추출 ==> 배열로 저장 
           const data_list = doc.querySelectorAll('data');
-
+          
           const day_label = ["오늘", "내일", "모래"];
+          
           for (let data of data_list) {
             // <temp>25.0</temp> ==> childNodes[0]=25.0이다 
             let day = data.querySelector('day').childNodes[0].nodeValue;
             day = day_label[parseInt(day)];
             let hour = data.querySelector('hour').childNodes[0].nodeValue;
             let temp = data.querySelector('temp').childNodes[0].nodeValue;
-            let rs = `[${day} - ${hour}시]  ▶ 온도 : ${temp} `
-            listGroup += '<li class="list-group-item">' + rs + '</li>';
+            let wfKor = data.querySelector('wfKor').childNodes[0].nodeValue;
+            if (wfKor.includes("비")) {
+              let r06 = (parseInt(data.querySelector('r06').childNodes[0].nodeValue)/6).toFixed(1);
+              let pop = data.querySelector('pop').childNodes[0].nodeValue
+              wfKor += `(${pop}%, ${r06}/h) `
+            }
+            let wd = data.querySelector('wd').childNodes[0].nodeValue;
+            let ws = parseInt(data.querySelector('ws').childNodes[0].nodeValue).toFixed(1);
+            let rs = `[${day} - ${hour}시] <br> 
+                  ▶온도 : ${temp}'C ▶날씨 : ${wfKor} ▶풍향: ${wd}  ▶풍속: ${ws}m/s`
+            listGroup += '<li class="list-group-item" id="weather-info">' + rs + '</li>';
           }
 
           document.querySelector('#pocket').innerHTML = '<ul class="list-group">' 
             + listGroup + '</ul>';
         }
       };
+
+      const w_info_list = document.querySelectorAll("#weather-info");
+      for(let w of w_info_list) {
+        w.onclick = function() {
+          alert("clicked!")
+        }
+      }
     }
   </script>
 </body>
