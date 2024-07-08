@@ -61,9 +61,8 @@
             }
             let wd = data.querySelector('wd').childNodes[0].nodeValue;
             let ws = parseInt(data.querySelector('ws').childNodes[0].nodeValue).toFixed(1);
-            let rs = `[${day} - ${hour}시] <br> 
-                  ▶온도 : ${temp}'C ▶날씨 : ${wfKor} ▶풍향: ${wd}  ▶풍속: ${ws}m/s`
-            listGroup += '<li class="list-group-item" id="weather-info">' + rs + '</li>';
+            let rs = `[${day} - ${hour}시] ▶온도 : ${temp}'C ▶날씨 : ${wfKor} ▶(풍향, 풍속): (${wd}, ${ws}m/s)`
+            listGroup += '<li class="list-group-item"><button class="btn" id="weather-info" type="button">' + rs + '</buton></li>';
           }
 
           document.querySelector('#pocket').innerHTML = '<ul class="list-group">' 
@@ -71,11 +70,11 @@
         }
       };
 
-      const w_info_list = document.querySelectorAll("#weather-info");
-      for(let w of w_info_list) {
-        w.onclick = function() {
-          alert("clicked!")
-        }
+    }
+    const w_info_list = document.querySelectorAll("#weather-info");
+    for(let w of w_info_list) {
+      w.onclick = function() {
+        alert("clicked!");
       }
     }
   </script>

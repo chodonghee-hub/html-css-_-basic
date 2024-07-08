@@ -22,6 +22,7 @@
   <script>
     document.querySelector('.btn-primary').onclick = function() {
       const xhr = new XMLHttpRequest();
+      // xml 데이터 불러오기 
       xhr.open('GET', '10.rss.xml');
       xhr.send();
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX Weather All</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" id="weather-daejeon" type="button">날씨예보</button>
+          <button class="btn btn-primary" id="weather-wool" type="button">울릉도 날씨예보</button>
+        </div>
+        <div class="col" id="pocket"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.btn-primary')
+    for(let btn of buttons) {
+    // document.querySelector('.btn-primary').onclick = function() {
+      btn.onclick = function() {
+        const xhr = new XMLHttpRequest();     // readyState = 0
+        // xml 파일을 연다 
+        console.log(this.id)
+        xhr.open('GET', `${this.id}.xml`)      // readyState = 1
+        xhr.send();     // readyState = 2
+
+        // XML 이벤트 처리 => 상태가 바뀔 때 마다 호출되는 이벤트 
+        xhr.onreadystatechange = function() {     // readyState = 3
+          // readyState : XML의 상태 
+          if (this.readyState == 4 && this.status == 200) {
+            // responseXML => XML 응답 결과 
+            const doc = this.responseXML;
+            // console.log(doc);
+
+            // doc에 저장된 XML데이터들을 읽기
+            const category = doc.querySelector('category');
+
+            let category_title = category.childNodes[0].nodeValue;
+
+            let listGroup = '';
+            listGroup += '<li class="list-group-item">' + category_title + '</li>';
+            
+            // 현재 온도 추출 ==> 배열로 저장 
+            const data_list = doc.querySelectorAll('data');
+            
+            const day_label = ["오늘", "내일", "모래"];
+            
+            for (let data of data_list) {
+              // <temp>25.0</temp> ==> childNodes[0]=25.0이다 
+              let day = data.querySelector('day').childNodes[0].nodeValue;
+              day = day_label[parseInt(day)];
+              let hour = data.querySelector('hour').childNodes[0].nodeValue;
+              let temp = data.querySelector('temp').childNodes[0].nodeValue;
+              let wfKor = data.querySelector('wfKor').childNodes[0].nodeValue;
+              if (wfKor.includes("비")) {
+                let r06 = (parseInt(data.querySelector('r06').childNodes[0].nodeValue)/6).toFixed(1);
+                let pop = data.querySelector('pop').childNodes[0].nodeValue
+                wfKor += `(${pop}%, ${r06}/h) `
+              }
+              let wd = data.querySelector('wd').childNodes[0].nodeValue;
+              let ws = parseInt(data.querySelector('ws').childNodes[0].nodeValue).toFixed(1);
+              let rs = `[${day} - ${hour}시] ▶온도 : ${temp}'C ▶날씨 : ${wfKor} ▶(풍향, 풍속): (${wd}, ${ws}m/s)`
+              listGroup += '<li class="list-group-item"><button class="btn" id="weather-info" type="button">' + rs + '</buton></li>';
+            }
+
+            document.querySelector('#pocket').innerHTML = '<ul class="list-group">' 
+              + listGroup + '</ul>';
+          }   
+        }       
+      }
+    }
+    const w_info_list = document.querySelectorAll("#weather-info");
+    for(let w of w_info_list) {
+      w.onclick = function() {
+        alert("clicked!");
+      }
+    }
+  </script>
+</body>
+</html>
