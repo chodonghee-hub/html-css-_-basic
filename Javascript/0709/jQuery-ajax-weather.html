@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery::Traversing</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-4">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary weather" type="button">날씨예보</button>
+                    <button class="btn btn-primary sports" type="button">네이버 스포츠 뉴스</button>
+                </div>
+            </div>
+            <div class="col-8" id="pocket"></div>
+        </div>
+    </div>
+
+    <script>
+        // $.ajax({}).done(function (data) { });
+        $('.sports').click(function() {
+        	console.log("sporst clicked !!")
+            $.ajax({
+                url: 'proxy-html_naver_sports.jsp',
+                dataType: 'html'
+            }).done(function (data) {
+                const items = $(data).find(".today_item")
+                console.log(items)
+                let listGroup = []
+                $.each(items, function(index, element) {
+                    let title = $(element).find('.title').text()
+                    listGroup.push(`<li class="list-group-item list-group-item-action">${title}</li>`);
+                });
+                let newUI = `<div class="list-group">${listGroup.join('')}</div>`;
+                $('#pocket').html(newUI);
+            })
+        });
+
+        $('.weather').click(function() {
+        	console.log("weather clicked !!")
+            $.ajax({
+                url: 'proxy-weather-daejeon.jsp',
+                dataType: 'html'   // 생략한번 html 데이터로 넘어와진다 , ( 생략 가능 )
+            }).done(function (data) {
+                // data : XML data => $(data) : jQuery data
+                const items = $(data).find('data');		// <data>마다 날씨 정보가 존재 
+                console.log(items)
+                let listGroup = [];
+                let ctg = $(data).find("category").text();	// category태그는 1개만 존재 ==> 바로 추가해도 상관 없음
+                listGroup.push(`<li class="list-group-item list-group-item-action">동네 이름 : ${ctg}</li>`);
+                // for (let v of items)
+                // each( 배열, function( 인덱스 번호, 배열의 값 ) )
+                $.each(items, function (index, element) {
+                    // elements 아래에 있는 title, link 태그를 찾아서 text로 추출한다 
+                    let wf = $(element).find('wfKor').text();
+
+                    listGroup.push(`<li class="list-group-item list-group-item-action">${wf}</li>`);
+                });
+
+                // listGroup 배열에 저장한 html 소스를 .join('')을 이용해서 연결한다 
+                let newUI = `<div class="list-group">${listGroup.join('')}</div>`;
+                $('#pocket').html(newUI);
+            });
+        });
+    </script>
+</body>
+
+</html>
