@@ -31,12 +31,12 @@
   });
 
   $('#img2').click(function() {
-    $(this).hide(1000);
+    $(this).hide(1000);             // hide( 시간 ) ==> 지정한 시간동안 서서히 사라짐 
   });
 
   $('#img3').click(function() {
     $(this).hide(1000, function() {
-      console.log('이미지 안보임');
+      console.log('이미지 안보임'); // hide( 시간, 함수 ) ==> 지정한 시간동안 서서히 사라짐 + 함수 지정 
     });
   });
 
